@@ -203,7 +203,6 @@ function scoreEndpoint(ep: { contentType: string; responseAnalysis: AnalyzedEndp
   if (ep.hasPaginationParam) s += 2;
   if (ep.hasLimitParam) s += 2;
   if (ep.status === 200) s += 2;
-  // Anti-Bot Empty Value Detection: penalize JSON endpoints returning empty data
   if (ep.responseAnalysis && ep.responseAnalysis.itemCount === 0 && ep.contentType.includes('json')) s -= 3;
   return s;
 }
